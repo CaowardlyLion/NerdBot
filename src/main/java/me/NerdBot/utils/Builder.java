@@ -1,5 +1,6 @@
 package me.NerdBot.utils;
 
+import com.oopsjpeg.osu4j.exception.OsuAPIException;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.Collection;
@@ -19,7 +20,7 @@ public class Builder {
             addCommand(c);
         }
     }
-    public void sendOut() {
+    public void sendOut() throws OsuAPIException {
         CommandParser parser = new CommandParser(event);
         parser.parseCommand(commands);
 

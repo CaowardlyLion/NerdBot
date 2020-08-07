@@ -14,7 +14,7 @@ public class CommandExecutor {
     public CommandExecutor(MessageReceivedEvent e) {
         event = e;
         mentions = e.getMessage().getMentions();
-        MessageChannel channel = e.getChannel();
+        channel = e.getChannel();
         args = e.getMessage().getContentRaw().split(" ");
     }
     public void sendMessage(String msg) {

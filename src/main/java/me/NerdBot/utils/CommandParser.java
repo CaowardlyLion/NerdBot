@@ -1,4 +1,5 @@
 package me.NerdBot.utils;
+import com.oopsjpeg.osu4j.exception.OsuAPIException;
 import net.dv8tion.jda.api.entities.IMentionable;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -17,7 +18,7 @@ public class CommandParser extends ListenerAdapter {
         exec = new CommandExecutor(event);
     }
 
-    public void parseCommand(HashMap<String, Command> commands) {
+    public void parseCommand(HashMap<String, Command> commands) throws OsuAPIException {
         String call = event.getMessage().getContentRaw().split(" ")[0].substring(1);
         System.out.println("I received: " + call + ", Calling " + commands.get(call));
         Command command = commands.get(call);

@@ -1,5 +1,8 @@
 package me.NerdBot;
+import com.oopsjpeg.osu4j.exception.OsuAPIException;
+import me.NerdBot.commands.F;
 import me.NerdBot.commands.Hello;
+import me.NerdBot.commands.osu;
 import me.NerdBot.utils.Builder;
 import me.NerdBot.utils.CommandParser;
 import net.dv8tion.jda.api.JDA;
@@ -19,6 +22,8 @@ public class NerdBot extends ListenerAdapter {
         JDA jda = JDABuilder.createDefault(creds.token).setActivity(Activity.playing("with fire")).build();
         jda.addEventListener(new NerdBot());
         builder.addCommand(new Hello());
+        builder.addCommand(new osu());
+        builder.addCommand(new F());
     }
     @Override
     public void onMessageReceived(MessageReceivedEvent event)
@@ -27,7 +32,11 @@ public class NerdBot extends ListenerAdapter {
         System.out.println("Received: " + msg.getContentRaw());
         if (msg.getContentRaw().charAt(0) == '>' && msg.getContentRaw().length() != 1) {
             builder.addEvent(event);
-            builder.sendOut();
+            try {
+                builder.sendOut();
+            } catch (OsuAPIException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
