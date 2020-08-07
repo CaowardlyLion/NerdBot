@@ -4,5 +4,5 @@ import com.oopsjpeg.osu4j.exception.OsuAPIException;
 
 public interface Command {
      String getKeyword();
-     void run(CommandExecutor exec) throws OsuAPIException;
+     void run(CommandExecutor exec);
 }

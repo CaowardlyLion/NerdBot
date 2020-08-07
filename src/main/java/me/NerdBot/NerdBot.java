@@ -1,5 +1,4 @@
 package me.NerdBot;
-import com.oopsjpeg.osu4j.exception.OsuAPIException;
 import me.NerdBot.utils.Builder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -25,11 +24,7 @@ public class NerdBot extends ListenerAdapter {
         System.out.println("Received: " + msg.getContentRaw());
         if (msg.getContentRaw().charAt(0) == '>' && msg.getContentRaw().length() != 1) {
             builder.addEvent(event);
-            try {
-                builder.sendOut();
-            } catch (OsuAPIException e) {
-                e.printStackTrace();
-            }
+            builder.sendOut();
         }
     }
 }
