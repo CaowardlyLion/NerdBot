@@ -3,8 +3,8 @@ package me.NerdBot.utils;
 import com.oopsjpeg.osu4j.exception.OsuAPIException;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
-import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 public class Builder {
     private HashMap<String, Command> commands = new HashMap<>();
@@ -15,7 +15,7 @@ public class Builder {
     public void addCommand(Command command) {
         commands.put(command.getKeyword().toLowerCase(), command);
     }
-    public void addCommandsAll(Collection<Command> collection) {
+    public void addCommandsAll(List<Command> collection) {
         for (Command c : collection) {
             addCommand(c);
         }
