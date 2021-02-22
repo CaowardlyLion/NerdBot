@@ -15,15 +15,25 @@ public class Pickle implements Command {
         Random random = new Random();
         System.out.println("message received");
         if (exec.mentions.size() > 1) {
-            exec.sendMessage("That's too many pickles! //");
+            exec.sendMessage("That's too many pickles to analyze! //");
         }
         else if (exec.mentions.size() == 0) {
             random.setSeed(exec.event.getAuthor().getIdLong());
-            exec.sendMessage("**" + exec.event.getAuthor().getName() + "**'s pickle is " + df.format(Double.valueOf(random.nextInt(50))/1.17) + " cm long!");
+            if (exec.event.getAuthor().getIdLong() == 339080766195630090L) {
+                exec.sendMessage("**" + exec.event.getAuthor().getName() + "**'s pickle is " + df.format(69420) + " cm long!");
+            }
+            else {
+                exec.sendMessage("**" + exec.event.getAuthor().getName() + "**'s pickle is " + df.format(Double.valueOf(random.nextInt(50))/1.17) + " cm long!");
+            }
         }
         else {
             random.setSeed(exec.mentions.get(0).getIdLong());
-            exec.sendMessage("**" + exec.mentions.get(0).getEffectiveName() + "**'s pickle is " + df.format(Double.valueOf(random.nextInt(50))/1.17) + " cm long!");
+            if (exec.mentions.get(0).getIdLong() == 339080766195630090L) {
+                exec.sendMessage("**" + exec.mentions.get(0).getEffectiveName() + "**'s pickle is " + df.format(69420) + " cm long!");
+            }
+            else {
+                exec.sendMessage("**" + exec.mentions.get(0).getEffectiveName() + "**'s pickle is " + df.format(Double.valueOf(random.nextInt(50))/1.17) + " cm long!");
+            }
         }
     }
     public String getKeyword() {

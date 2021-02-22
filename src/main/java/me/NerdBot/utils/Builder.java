@@ -2,6 +2,7 @@ package me.NerdBot.utils;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,9 +20,13 @@ public class Builder {
             addCommand(c);
         }
     }
-    public void sendOut() {
-        CommandParser parser = new CommandParser(event);
-        parser.parseCommand(commands);
+    public void sendOut() throws IOException {
+        try {
+            CommandParser parser = new CommandParser(event);
+            parser.parseCommand(commands);
+        }
+        catch (NullPointerException e) {
 
+        }
     }
 }

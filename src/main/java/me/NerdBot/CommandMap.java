@@ -1,8 +1,6 @@
 package me.NerdBot;
 
-import me.NerdBot.commands.F;
-import me.NerdBot.commands.Hello;
-import me.NerdBot.commands.Pickle;
+import me.NerdBot.commands.*;
 import me.NerdBot.utils.Command;
 
 import java.util.ArrayList;
@@ -15,6 +13,11 @@ public class CommandMap{
         map.add(new F());
         map.add(new Hello());
         map.add(new Pickle());
+        map.add(new BrainPower());
+        map.add(new Uwuify());
+        map.add(new Kira());
+        map.add(new Copypasta());
+        map.add(new Help());
     }
     public ArrayList<Command> getMap() {
         return map;

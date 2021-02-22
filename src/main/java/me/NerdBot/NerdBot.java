@@ -9,6 +9,8 @@ import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
+import java.io.IOException;
+
 public class NerdBot extends ListenerAdapter {
     static Builder builder = new Builder();
     static CommandMap commandMap = new CommandMap();
@@ -22,9 +24,18 @@ public class NerdBot extends ListenerAdapter {
         builder.addCommandsAll(commandMap.getMap());
         Message msg = event.getMessage();
         System.out.println("Received: " + msg.getContentRaw());
-        if (msg.getContentRaw().charAt(0) == '>' && msg.getContentRaw().length() != 1) {
-            builder.addEvent(event);
-            builder.sendOut();
+        try {
+            if (msg.getContentRaw().charAt(0) == '>' && msg.getContentRaw().length() != 1) {
+                builder.addEvent(event);
+                try {
+                    builder.sendOut();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        catch (StringIndexOutOfBoundsException c) {
+
         }
     }
 }
